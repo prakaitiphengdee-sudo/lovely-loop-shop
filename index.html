@@ -90,6 +90,11 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .add-btn {
   width: 100%;
   background: #e88bb3;
@@ -110,6 +115,12 @@ button {
   align-items: center;
   padding: 10px 0;
   border-bottom: 1px solid #f3dce6;
+  gap: 10px;
+}
+
+.quantity {
+  display: flex;
+  gap: 5px;
 }
 
 .quantity button {
@@ -178,6 +189,13 @@ footer {
   color: #a47788;
   font-size: 14px;
 }
+
+.status {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #c95c8c;
+}
 </style>
 </head>
 
@@ -194,190 +212,548 @@ footer {
 
 <div class="products">
 
+  <!-- กำไล -->
   <div class="product">
-    <img src="https://raw.githubusercontent.com/prakaitiphengdee-sudo/lovely-loop-images/main/IMG_1282.png">
+    <img
+      src="https://raw.githubusercontent.com/prakaitiphengdee-sudo/lovely-loop-images/main/IMG_1282.png"
+      alt="กำไลเชือกเทียน"
+    >
+
     <div class="product-info">
-      <div class="product-name">🎀 กำไลเชือกเทียน</div>
-      <div class="price">39 บาท</div>
-      <button class="add-btn" onclick="addToCart('กำไลเชือกเทียน',39)">
+
+      <div class="product-name">
+        🎀 กำไลเชือกเทียน
+      </div>
+
+      <div class="price">
+        39 บาท
+      </div>
+
+      <button
+        class="add-btn"
+        type="button"
+        onclick="addToCart('กำไลเชือกเทียน',39)"
+      >
         🛒 เพิ่มลงตะกร้า
       </button>
+
     </div>
   </div>
 
+
+  <!-- สร้อย -->
   <div class="product">
-    <img src="https://raw.githubusercontent.com/prakaitiphengdee-sudo/lovely-loop-images/main/IMG_1274.png">
+
+    <img
+      src="https://raw.githubusercontent.com/prakaitiphengdee-sudo/lovely-loop-images/main/IMG_1274.png"
+      alt="สร้อยเชือกเทียน"
+    >
+
     <div class="product-info">
-      <div class="product-name">🌸 สร้อยเชือกเทียน</div>
-      <div class="price">79 บาท</div>
-      <button class="add-btn" onclick="addToCart('สร้อยเชือกเทียน',79)">
+
+      <div class="product-name">
+        🌸 สร้อยเชือกเทียน
+      </div>
+
+      <div class="price">
+        79 บาท
+      </div>
+
+      <button
+        class="add-btn"
+        type="button"
+        onclick="addToCart('สร้อยเชือกเทียน',79)"
+      >
         🛒 เพิ่มลงตะกร้า
       </button>
+
     </div>
   </div>
 
+
+  <!-- สายรัดเข็มขัด -->
   <div class="product">
-    <img src="https://raw.githubusercontent.com/prakaitiphengdee-sudo/lovely-loop-images/main/IMG_1287.png">
+
+    <img
+      src="https://raw.githubusercontent.com/prakaitiphengdee-sudo/lovely-loop-images/main/IMG_1287.png"
+      alt="สายรัดเข็มขัด"
+    >
+
     <div class="product-info">
-      <div class="product-name">✨ สายรัดเข็มขัด</div>
-      <div class="price">59 บาท</div>
-      <button class="add-btn" onclick="addToCart('สายรัดเข็มขัด',59)">
+
+      <div class="product-name">
+        ✨ สายรัดเข็มขัด
+      </div>
+
+      <div class="price">
+        59 บาท
+      </div>
+
+      <button
+        class="add-btn"
+        type="button"
+        onclick="addToCart('สายรัดเข็มขัด',59)"
+      >
         🛒 เพิ่มลงตะกร้า
       </button>
+
     </div>
   </div>
 
 </div>
 
-<h2 class="section-title">🛒 ตะกร้าสินค้า</h2>
+
+<h2 class="section-title">
+  🛒 ตะกร้าสินค้า
+</h2>
 
 <div class="cart">
 
   <div id="cartItems">
-    <div class="empty">ยังไม่มีสินค้าในตะกร้า 💕</div>
+    <div class="empty">
+      ยังไม่มีสินค้าในตะกร้า 💕
+    </div>
   </div>
 
   <div class="total">
-    รวมทั้งหมด: <span id="total">0</span> บาท
+    รวมทั้งหมด:
+    <span id="total">0</span>
+    บาท
   </div>
 
 </div>
 
-<h2 class="section-title">🧾 ข้อมูลสำหรับจัดส่ง</h2>
+
+<h2 class="section-title">
+  🧾 ข้อมูลสำหรับจัดส่ง
+</h2>
 
 <form onsubmit="submitOrder(event)">
 
-  <label>ชื่อผู้รับ</label>
-  <input id="name" type="text" placeholder="กรอกชื่อ-นามสกุล" required>
+  <label for="name">
+    ชื่อผู้รับ
+  </label>
 
-  <label>เบอร์โทรศัพท์</label>
-  <input id="phone" type="tel" placeholder="กรอกเบอร์โทรศัพท์" required>
+  <input
+    id="name"
+    type="text"
+    placeholder="กรอกชื่อ-นามสกุล"
+    required
+  >
 
-  <label>ที่อยู่จัดส่ง</label>
-  <textarea id="address" placeholder="บ้านเลขที่ ถนน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์" required></textarea>
 
-  <button class="order-btn" type="submit">
+  <label for="phone">
+    เบอร์โทรศัพท์
+  </label>
+
+  <input
+    id="phone"
+    type="tel"
+    placeholder="กรอกเบอร์โทรศัพท์"
+    required
+  >
+
+
+  <label for="address">
+    ที่อยู่จัดส่ง
+  </label>
+
+  <textarea
+    id="address"
+    placeholder="บ้านเลขที่ ถนน ตำบล อำเภอ จังหวัด รหัสไปรษณีย์"
+    required
+  ></textarea>
+
+
+  <button
+    class="order-btn"
+    id="orderButton"
+    type="submit"
+  >
     💗 ยืนยันคำสั่งซื้อ
   </button>
+
+  <div
+    class="status"
+    id="status"
+  ></div>
 
 </form>
 
 </div>
 
+
 <footer>
   🌷 Lovely Loop — Handmade with Love 💕
 </footer>
 
+
 <script>
+
+/* =====================================
+   GOOGLE APPS SCRIPT WEB APP
+   ===================================== */
+
+const WEB_APP_URL =
+"https://script.google.com/macros/s/AKfycbzTDmBdazxi_Ju9qQKZubsofXQezdhlq4Iz9wH4_0p4r1k0e0u2SRk6umw81fxpfjr9NQ/exec";
+
+
+/* =====================================
+   CART
+   ===================================== */
 
 let cart = [];
 
+
+/* เพิ่มสินค้า */
+
 function addToCart(name, price) {
 
-  let item = cart.find(product => product.name === name);
+  const existingItem =
+    cart.find(item => item.name === name);
 
-  if (item) {
-    item.quantity++;
+  if (existingItem) {
+
+    existingItem.quantity++;
+
   } else {
+
     cart.push({
       name: name,
       price: price,
       quantity: 1
     });
+
   }
 
   renderCart();
 }
 
+
+/* เปลี่ยนจำนวน */
+
 function changeQuantity(index, amount) {
+
+  if (!cart[index]) {
+    return;
+  }
 
   cart[index].quantity += amount;
 
   if (cart[index].quantity <= 0) {
+
     cart.splice(index, 1);
+
   }
 
   renderCart();
 }
 
+
+/* แสดงตะกร้า */
+
 function renderCart() {
 
-  const cartItems = document.getElementById("cartItems");
-  const totalElement = document.getElementById("total");
+  const cartItems =
+    document.getElementById("cartItems");
+
+  const totalElement =
+    document.getElementById("total");
+
 
   if (cart.length === 0) {
+
     cartItems.innerHTML =
       '<div class="empty">ยังไม่มีสินค้าในตะกร้า 💕</div>';
 
     totalElement.textContent = "0";
+
     return;
   }
 
+
   let total = 0;
+
   let html = "";
+
 
   cart.forEach((item, index) => {
 
-    let subtotal = item.price * item.quantity;
+    const subtotal =
+      item.price * item.quantity;
+
     total += subtotal;
 
+
     html += `
+
       <div class="cart-item">
 
         <div>
-          <strong>${item.name}</strong><br>
+
+          <strong>
+            ${item.name}
+          </strong>
+
+          <br>
+
           ${item.price} บาท × ${item.quantity}
+
+          <br>
+
+          <small>
+            รวม ${subtotal} บาท
+          </small>
+
         </div>
 
+
         <div class="quantity">
-          <button onclick="changeQuantity(${index},-1)">−</button>
-          <button onclick="changeQuantity(${index},1)">+</button>
+
+          <button
+            type="button"
+            onclick="changeQuantity(${index}, -1)"
+          >
+            −
+          </button>
+
+          <button
+            type="button"
+            onclick="changeQuantity(${index}, 1)"
+          >
+            +
+          </button>
+
         </div>
 
       </div>
+
     `;
+
   });
 
+
   cartItems.innerHTML = html;
+
   totalElement.textContent = total;
+
 }
 
-function submitOrder(event) {
+
+/* =====================================
+   SUBMIT ORDER
+   ===================================== */
+
+async function submitOrder(event) {
 
   event.preventDefault();
 
+
+  /* ตรวจว่ามีสินค้า */
+
   if (cart.length === 0) {
-    alert("กรุณาเลือกสินค้าก่อนนะคะ 💕");
+
+    alert(
+      "กรุณาเลือกสินค้าก่อนนะคะ 💕"
+    );
+
     return;
   }
 
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const address = document.getElementById("address").value;
 
-  let total = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  /* ข้อมูลลูกค้า */
 
-  let orderText = "🌷 Lovely Loop\n\n";
+  const name =
+    document
+      .getElementById("name")
+      .value
+      .trim();
 
-  cart.forEach(item => {
-    orderText +=
-      `${item.name} × ${item.quantity} = ${item.price * item.quantity} บาท\n`;
-  });
 
-  orderText += `\nรวมทั้งหมด: ${total} บาท`;
-  orderText += `\n\nชื่อ: ${name}`;
-  orderText += `\nโทร: ${phone}`;
-  orderText += `\nที่อยู่: ${address}`;
+  const phone =
+    document
+      .getElementById("phone")
+      .value
+      .trim();
 
-  alert(
-    "รับข้อมูลคำสั่งซื้อแล้วค่ะ 💗\n\n" +
-    orderText +
-    "\n\nขั้นตอนถัดไปเราจะเชื่อมระบบส่งคำสั่งซื้อและชำระเงินอัตโนมัติค่ะ"
-  );
+
+  const address =
+    document
+      .getElementById("address")
+      .value
+      .trim();
+
+
+  /* คำนวณยอดรวม */
+
+  const total =
+    cart.reduce(
+      (sum, item) =>
+        sum + (item.price * item.quantity),
+      0
+    );
+
+
+  /* รายการสินค้า */
+
+  const items =
+    cart
+      .map(item =>
+        `${item.name} x ${item.quantity}`
+      )
+      .join(", ");
+
+
+  /* จำนวน */
+
+  const quantity =
+    cart
+      .map(item =>
+        item.quantity
+      )
+      .join(", ");
+
+
+  /* ข้อมูลที่จะส่ง */
+
+  const orderData = {
+
+    name: name,
+
+    phone: phone,
+
+    address: address,
+
+    items: items,
+
+    quantity: quantity,
+
+    total: total
+
+  };
+
+
+  /* ปุ่มและสถานะ */
+
+  const button =
+    document.getElementById("orderButton");
+
+
+  const status =
+    document.getElementById("status");
+
+
+  button.disabled = true;
+
+  button.textContent =
+    "⏳ กำลังส่งคำสั่งซื้อ...";
+
+
+  status.textContent = "";
+
+
+  try {
+
+    /*
+      ส่งข้อมูลไป Google Apps Script
+
+      ใช้ text/plain เพื่อหลีกเลี่ยง
+      preflight CORS
+    */
+
+    await fetch(
+
+      WEB_APP_URL,
+
+      {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+
+          "Content-Type":
+            "text/plain;charset=utf-8"
+
+        },
+
+        body:
+          JSON.stringify(orderData)
+
+      }
+
+    );
+
+
+    /* สำเร็จ */
+
+    status.textContent =
+      "💗 ส่งคำสั่งซื้อเรียบร้อยแล้วค่ะ";
+
+
+    alert(
+
+      "🌷 ขอบคุณสำหรับคำสั่งซื้อค่ะ 💗\n\n" +
+
+      "ระบบได้รับข้อมูลคำสั่งซื้อแล้ว\n" +
+
+      "ทางร้านจะตรวจสอบและติดต่อกลับค่ะ"
+
+    );
+
+
+    /* ล้างตะกร้า */
+
+    cart = [];
+
+    renderCart();
+
+
+    /* ล้างแบบฟอร์ม */
+
+    document
+      .querySelector("form")
+      .reset();
+
+
+  }
+
+  catch (error) {
+
+    console.error(error);
+
+
+    status.textContent =
+      "❌ ไม่สามารถส่งคำสั่งซื้อได้";
+
+
+    alert(
+
+      "ขออภัยค่ะ ระบบส่งคำสั่งซื้อไม่สำเร็จ\n" +
+
+      "กรุณาลองใหม่อีกครั้งนะคะ"
+
+    );
+
+  }
+
+
+  finally {
+
+    button.disabled = false;
+
+    button.textContent =
+      "💗 ยืนยันคำสั่งซื้อ";
+
+  }
+
 }
+
+
+/* เริ่มต้นแสดงตะกร้า */
+
+renderCart();
 
 </script>
 
